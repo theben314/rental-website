@@ -1,1 +1,54 @@
-https://sheetdb.io/api/v1/kxcu7cojc3vns
+layout: default
+title: DATA PHARMS Inc.
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA PHARMS Inc. - Room Rentals</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>DATA PHARMS Inc.</h1>
+        <p>Providing Housing and Resources for Modern Students & Professionals</p>
+    </header>
+
+    <section id="properties">
+        <h2>Available Rooms</h2>
+        <div id="property-list"></div>
+    </section>
+
+    <section id="application">
+        <h2>Apply for a Room</h2>
+        <iframe src="YOUR_GOOGLE_FORM_URL" width="100%" height="600px"></iframe>
+    </section>
+
+    <section id="schedule">
+        <h2>Schedule a Viewing</h2>
+        <iframe src="YOUR_CALENDLY_URL" width="100%" height="600px"></iframe>
+    </section>
+
+    <script>
+        fetch('https://sheetdb.io/api/v1/kxcu7cojc3vns')
+        .then(response => response.json())
+        .then(data => {
+            let propertyList = document.getElementById("property-list");
+            data.forEach(room => {
+                let roomDiv = document.createElement("div");
+                roomDiv.classList.add("room");
+                roomDiv.innerHTML = `
+                    <h3>${room.property_name} - Room ${room.room_number}</h3>
+                    <img src="${room.image_url}" alt="Room Image">
+                    <p>Available from: ${room.available_from}</p>
+                    <a href="${room.application_link}" target="_blank">Apply Now</a>
+                `;
+                propertyList.appendChild(roomDiv);
+            });
+        })
+        .catch(error => console.error("Error fetching data:", error));
+    </script>
+</body>
+</html>
