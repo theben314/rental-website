@@ -1,0 +1,19 @@
+name: Unzip File
+
+on:
+  push:
+    branches:
+      - main  # This will run when you push changes to the 'main' branch.
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest  # Runs the action on a Linux-based environment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # This checks out your code.
+
+      - name: Unzip the file
+        run: |
+          mkdir unzipped  # Create a folder to unzip into.
+          unzip your-zip-file.zip -d unzipped  # Replace 'your-zip-file.zip' with the name of your zip file.
