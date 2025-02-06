@@ -1,56 +1,151 @@
-layout: default
-title: DATA PHARMS Inc.
----
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DATA PHARMS Inc. - Room Rentals</title>
-    <link rel="stylesheet" href="styles.css">
+<title>225 Harold Tour</title>
+<meta charset="utf-8">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+<style> @-ms-viewport { width: device-width; } </style>
+<link rel="stylesheet" href="vendor/reset.min.css">
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <h1>DATA PHARMS Inc.</h1>
-        <p>Providing Housing and Resources for Modern Students & Professionals</p>
-    </header>
+<body class="multiple-scenes ">
 
-    <section id="properties">
-        <h2>Available Rooms</h2>
-        <div id="property-list"></div>
-    </section>
+<div id="pano"></div>
 
-    <section id="application">
-        <h2>Apply for a Room</h2>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf3gZRvyUF2buz6uRMnYkj2JlFIjCwZ3Nvj74lXRwrpfYZxqQ/viewform?usp=header" width="100%" height="600px"></iframe>
-    </section>
+<div id="sceneList">
+  <ul class="scenes">
+    
+      <a href="javascript:void(0)" class="scene" data-id="0-225-1">
+        <li class="text">225-1</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="1-225-2">
+        <li class="text">225-2</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="2-225-3">
+        <li class="text">225-3</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="3-225-5">
+        <li class="text">225-5</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="4-225-6">
+        <li class="text">225-6</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="5-225-7">
+        <li class="text">225-7</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="6-225-8">
+        <li class="text">225-8</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="7-225-9">
+        <li class="text">225-9</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="8-225-10">
+        <li class="text">225-10</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="9-225-11">
+        <li class="text">225-11</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="10-225-12">
+        <li class="text">225-12</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="11-225-14">
+        <li class="text">225-14</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="12-225-15">
+        <li class="text">225-15</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="13-225-16">
+        <li class="text">225-16</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="14-225-17">
+        <li class="text">225-17</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="15-225-18">
+        <li class="text">225-18</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="16-225-19">
+        <li class="text">225-19</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="17-225-20">
+        <li class="text">225-20</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="18-225-21">
+        <li class="text">225-21</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="19-225-22">
+        <li class="text">225-22</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="20-225-23">
+        <li class="text">225-23</li>
+      </a>
+    
+  </ul>
+</div>
 
-    <section id="schedule">
-        <h2>Schedule a Viewing</h2>
-        <iframe src="https://calendly.com/theben314/room-viewing-appointment" width="100%" height="600px"></iframe>
-    </section>
+<div id="titleBar">
+  <h1 class="sceneName"></h1>
+</div>
 
-    <script>
-        fetch('https://sheetdb.io/api/v1/kxcu7cojc3vns')
-    .then(response => response.json())
-    .then(data => {
-        let propertyList = document.getElementById("property-list");
-        data.forEach(room => {
-            if (room.rented_status.toLowerCase() !== "rented") {  // Hide rented rooms
-                let roomDiv = document.createElement("div");
-                roomDiv.classList.add("room");
-                roomDiv.innerHTML = `
-                    <h3>${room.property_name} - Room ${room.room_number}</h3>
-                    <img src="${room.image_url}" alt="Room Image">
-                    <p>Available from: ${room.available_from}</p>
-                    <a href="${room.application_link}" target="_blank">Apply Now</a>
-                `;
-                propertyList.appendChild(roomDiv);
-            }
-        });
-    })
-        .catch(error => console.error("Error fetching data:", error));
-    </script>
+<a href="javascript:void(0)" id="autorotateToggle">
+  <img class="icon off" src="img/play.png">
+  <img class="icon on" src="img/pause.png">
+</a>
+
+<a href="javascript:void(0)" id="fullscreenToggle">
+  <img class="icon off" src="img/fullscreen.png">
+  <img class="icon on" src="img/windowed.png">
+</a>
+
+<a href="javascript:void(0)" id="sceneListToggle">
+  <img class="icon off" src="img/expand.png">
+  <img class="icon on" src="img/collapse.png">
+</a>
+
+<a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
+  <img class="icon" src="img/up.png">
+</a>
+<a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
+  <img class="icon" src="img/down.png">
+</a>
+<a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
+  <img class="icon" src="img/left.png">
+</a>
+<a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
+  <img class="icon" src="img/right.png">
+</a>
+<a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
+  <img class="icon" src="img/plus.png">
+</a>
+<a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
+  <img class="icon" src="img/minus.png">
+</a>
+
+<script src="vendor/screenfull.min.js" ></script>
+<script src="vendor/bowser.min.js" ></script>
+<script src="vendor/marzipano.js" ></script>
+
+<script src="data.js"></script>
+<script src="index.js"></script>
+
 </body>
 </html>
