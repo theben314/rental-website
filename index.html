@@ -33,10 +33,11 @@ title: DATA PHARMS Inc.
 
     <script>
         fetch('https://sheetdb.io/api/v1/kxcu7cojc3vns')
-        .then(response => response.json())
-        .then(data => {
-            let propertyList = document.getElementById("property-list");
-            data.forEach(room => {
+    .then(response => response.json())
+    .then(data => {
+        let propertyList = document.getElementById("property-list");
+        data.forEach(room => {
+            if (room.rented_status.toLowerCase() !== "rented") {  // Hide rented rooms
                 let roomDiv = document.createElement("div");
                 roomDiv.classList.add("room");
                 roomDiv.innerHTML = `
@@ -46,8 +47,9 @@ title: DATA PHARMS Inc.
                     <a href="${room.application_link}" target="_blank">Apply Now</a>
                 `;
                 propertyList.appendChild(roomDiv);
-            });
-        })
+            }
+        });
+    })
         .catch(error => console.error("Error fetching data:", error));
     </script>
 </body>
